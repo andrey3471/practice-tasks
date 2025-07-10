@@ -1,0 +1,130 @@
+/* --- Общий контейнер --- */
+.container {
+  background: transparent;
+  box-shadow: none;
+  padding: 20px 0 0 0;
+  max-width: 980px;
+  margin: 32px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Фильтр таблицы --- */
+.table-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.table-filter label {
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0;
+}
+
+.table-filter input[type="number"] {
+  width: 70px;
+  padding: 4px 7px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.table-filter button {
+  padding: 4px 20px;
+  font-size: 16px;
+  border: 1px solid #888;
+  border-radius: 3px;
+  background: #ededed;
+  color: #444;
+  cursor: pointer;
+  transition: background .15s, color .13s;
+}
+.table-filter button:disabled,
+.table-filter button[disabled] {
+  background: #f3f3f3;
+  color: #bbb;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+.table-filter button:hover:not(:disabled) {
+  background: #e1e1e1;
+  color: #222;
+}
+
+/* --- Таблица товаров --- */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  min-width: 320px;
+  margin: 0 auto;
+  border: 1.5px solid #444;
+}
+
+.data-table th, .data-table td {
+  padding: 10px 13px;
+  font-size: 16px;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+.data-table th {
+  background: #f1f2f6;
+  font-weight: 600;
+  border-bottom: 2px solid #444;
+}
+
+.data-table td {
+  background: #fff;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table th:first-child,
+.data-table td:first-child {
+  border-left: none;
+}
+
+.data-table th:last-child,
+.data-table td:last-child {
+  border-right: none;
+}
+
+.data-table {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.table-message {
+  text-align: center;
+  margin: 36px 0 18px 0;
+  font-size: 18px;
+  color: #ae0c0c;
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 800px) {
+  .container { max-width: 98vw; }
+}
+@media (max-width: 600px) {
+  .container { max-width: 100vw; }
+  .data-table th, .data-table td { font-size: 13px; padding: 6px 3px; }
+  .table-filter label { font-size: 15px; }
+}
+@media (max-width: 430px) {
+  .table-filter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .container { padding: 10px 2vw 0 2vw; }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "interactive-app-proxy",
+  "version": "1.0.0",
+  "description": "Proxy for frontend CORS",
+  "main": "proxy.js",
+  "scripts": {
+    "start": "node proxy.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}

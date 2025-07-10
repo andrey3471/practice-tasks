@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Гостевая книга</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .gb-container { max-width: 430px; margin: 0 auto; }
+    .gb-message { border: 1px solid #222; border-radius: 6px; margin-bottom: 10px; padding: 7px 9px 12px 9px; }
+    .gb-head { font-size: 14px; color: #222; display: flex; justify-content: space-between; align-items: center; }
+    .gb-body { font-size: 15px; margin: 6px 0 0 0; }
+    form { margin-top: 22px; display: flex; flex-direction: column; gap: 8px; }
+    input, textarea { font-size: 16px; width: 100%; box-sizing: border-box; padding: 5px 7px; border: 1px solid #333; border-radius: 4px; }
+    textarea { resize: vertical; min-height: 55px; }
+    button[type="submit"] { margin-top: 8px; align-self: flex-start; font-size: 17px; padding: 4px 19px; border-radius: 6px; }
+    @media (max-width: 540px) { .gb-container { max-width: 99vw; } }
+  </style>
+</head>
+<body>
+  <div class="gb-container">
+    <div id="gb-list"></div>
+    <hr>
+    <form id="gb-form" autocomplete="off">
+      <input type="text" id="gb-name" placeholder="Имя">
+      <textarea id="gb-text" placeholder="Ваше сообщение"></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
+  <script>
+    // Загрузка сообщений
+    function loadMessages() {
+      fetch('/api/messages').then(r=>r.json()).then(messages=>{
+        const list = document.getElementById('gb-list');
+        list.innerHTML = messages.map(m => `
+          <div class="gb-message">
+            <div class="gb-head">
+              <span>${m.date}</span>
+              <b>${m.name}</b>
+            </div>
+            <div class="gb-body">${m.text.replace(/</g, '&lt;')}</div>
+          </div>
+        `).join('');
+      });
+    }
+
+    // Отправка сообщения
+    document.getElementById('gb-form').onsubmit = function(e){
+      e.preventDefault();
+      const name = document.getElementById('gb-name').value.trim();
+      const text = document.getElementById('gb-text').value.trim();
+      if (!text) {
+        alert('Сообщение не должно быть пустым!');
+        return;
+      }
+      fetch('/api/messages', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ name, text })
+      }).then(r=>r.json()).then(res=>{
+        if (res.ok) {
+          document.getElementById('gb-form').reset();
+          loadMessages();
+        } else {
+          alert(res.error || 'Ошибка!');
+        }
+      });
+    };
+    loadMessages();
+  </script>
+</body>
+</html>

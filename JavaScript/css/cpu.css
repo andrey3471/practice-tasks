@@ -1,0 +1,25 @@
+.container {
+  max-width: 500px;
+  margin: 38px auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 18px 32px 18px;
+  box-shadow: 0 4px 32px #0001;
+}
+#cpuChart {
+  width: 100% !important;
+  max-width: 100%;
+  margin: 14px 0 26px 0;
+  background: #f8fbff;
+  border-radius: 10px;
+}
+.cpu-stats {
+  font-size: 16px;
+  text-align: center;
+  color: #1a2d3c;
+}
+@media (max-width: 600px) {
+  .container { max-width: 97vw; padding: 8vw 2vw; }
+  #cpuChart { min-height: 130px; }
+  .cpu-stats { font-size: 14px; }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Счетчик посещений</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Подключаем отдельный CSS-файл -->
+  <link rel="stylesheet" href="css/counter.css">
+</head>
+<body>
+  <div class="counter-card" id="counterMsg">
+    Загружаем…
+  </div>
+  <script>
+    // Получаем данные с /counter и обновляем отображение
+    fetch('/counter')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('counterMsg').innerHTML =
+          `Страница была загружена <b>${data.count}</b> раз.<br>Текущее время ${data.time}.`;
+      })
+      .catch(() => {
+        document.getElementById('counterMsg').innerHTML = "Ошибка загрузки счётчика.";
+      });
+  </script>
+</body>
+</html>

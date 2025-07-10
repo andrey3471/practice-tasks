@@ -1,0 +1,111 @@
+.spreadsheet-container {
+  max-width: 700px;
+  margin: 36px auto 0 auto;
+  padding: 16px 4vw 40px 4vw;
+  background: #fff;
+  border-radius: 13px;
+  box-shadow: 0 4px 24px #0001;
+}
+
+.s-table-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Именно center! */
+  gap: 18px; /* Расстояние между таблицей и кнопками */
+  width: 100%;
+}
+
+.s-table {
+  border-collapse: collapse;
+  margin: 0;
+  width: auto;
+  background: #fff;
+}
+
+.s-table td {
+  border: 1px solid #444;
+  min-width: 70px;
+  height: 44px;
+  text-align: left;
+  padding: 0;
+  font-size: 17px;
+}
+
+.s-cell-content {
+  padding: 7px 9px;
+  display: block;
+  min-height: 100%;
+  width: 100%;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.17s;
+}
+
+.s-cell-content:empty:before {
+  content: '\200b';
+}
+
+.s-table input[type="text"] {
+  width: 100%;
+  height: 100%;
+  font-size: 17px;
+  border: 1.5px solid #7cb2fd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 7px 9px;
+  outline: none;
+  background: #f5fbff;
+  color: #222;
+}
+
+.s-table-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.s-btn {
+  background: #f8f8f8;
+  border: 1.5px solid #666;
+  border-radius: 6px;
+  font-size: 17px;
+  padding: 2px 12px;
+  cursor: pointer;
+  min-width: 34px;
+  min-height: 32px;
+  transition: background 0.16s, border 0.13s;
+  margin: 0;
+  box-sizing: border-box;
+  display: block;
+}
+.s-btn:disabled {
+  opacity: 0.46;
+  cursor: not-allowed;
+}
+.s-btn:active, .s-btn:focus {
+  background: #e6f1fd;
+  border-color: #3e8ffb;
+}
+.s-table-row-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 13px;
+}
+
+@media (max-width: 600px) {
+  .spreadsheet-container { max-width: 99vw; padding: 7vw 2vw 18vw 2vw; }
+  .s-table-wrap { flex-direction: column; align-items: stretch; gap: 0; }
+  .s-table-controls {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0 0 0;
+    gap: 10px;
+  }
+  .s-table td { min-width: 48px; font-size: 13px; }
+  .s-table input[type="text"] { font-size: 14px; }
+  .s-btn { font-size: 15px; min-width: 28px; min-height: 28px; }
+}

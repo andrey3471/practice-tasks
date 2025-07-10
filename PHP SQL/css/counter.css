@@ -1,0 +1,25 @@
+body {
+  font-family: sans-serif;
+  background: #f7f7f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+}
+
+.counter-card {
+  background: #fff;
+  padding: 34px 26px;
+  border-radius: 11px;
+  box-shadow: 0 2px 14px #0001;
+  font-size: 21px;
+  min-width: 340px;
+}
+
+@media (max-width: 500px) {
+  .counter-card {
+    font-size: 16px;
+    padding: 17vw 2vw;
+    min-width: 0;
+  }
+}

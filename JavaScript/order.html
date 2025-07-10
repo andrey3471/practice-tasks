@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Оформление заказа</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/order.css">
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+  <div class="container">
+    <form id="orderForm" autocomplete="off">
+      <input type="text" id="fio" placeholder="ФИО" required>
+      <input type="text" id="phone" placeholder="Телефон" required>
+      <input type="email" id="email" placeholder="Email">
+      <div id="map" class="map"></div>
+      <textarea id="comment" placeholder="Комментарий к заказу (макс. 500 символов)" maxlength="500"></textarea>
+      <button type="submit">Отправить</button>
+      <div id="formMessage"></div>
+    </form>
+  </div>
+  <script src="js/order.js"></script>
+</body>
+</html>
